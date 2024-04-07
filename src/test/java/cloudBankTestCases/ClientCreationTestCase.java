@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import java.time.Duration;
 
@@ -52,6 +54,10 @@ public class ClientCreationTestCase {
     @Test
     void createNewClient(){
 
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("ddMMyyyyHHmmss");
+        String uniqueString = dtf.format(currentDateTime);
+
         SoftAssert softAssert = new SoftAssert();
 
         objHomePage = new Homepage(driver);
@@ -71,7 +77,7 @@ public class ClientCreationTestCase {
                 "Create Client Title Not Found");
 
         //Fill out form
-        objCreateClientPage.fillOutForm("Client", "Abc", "123 Philippines", "092712345678", "clientabc@gmail.com");
+        objCreateClientPage.fillOutForm("Client", "Abc", "123 Philippines", "092712345678", "clientabc"+uniqueString+"@gmail.com");
 
         //Verify Client successfully created
         assertTrue(objClientListPage.clientListTitle.isDisplayed());
