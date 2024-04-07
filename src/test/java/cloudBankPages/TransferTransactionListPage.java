@@ -13,7 +13,7 @@ public class TransferTransactionListPage {
     @FindBy(xpath = "//h1[text()='Transfer Transaction List']")
     public WebElement transferTrxListTitle;
 
-    private WebElement getTransferTrxInList(String text){
+    public WebElement getTransferTrxInList(String text){
         String trxRefInListLocator = "//table[@id='dataTable']//tbody//a[text()='%s']";
         return driver.findElement(By.xpath(String.format(trxRefInListLocator, text)));
     }

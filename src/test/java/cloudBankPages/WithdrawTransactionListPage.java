@@ -13,7 +13,7 @@ public class WithdrawTransactionListPage {
     @FindBy(xpath = "//h1[text()='Withdraw Transaction List']")
     public WebElement withdrawTrxListTitle;
 
-    private WebElement getWithdrawTrxInList(String text){
+    public WebElement getWithdrawTrxInList(String text){
         String trxRefInListLocator = "//table[@id='dataTable']//tbody//a[text()='%s']";
         return driver.findElement(By.xpath(String.format(trxRefInListLocator, text)));
     }

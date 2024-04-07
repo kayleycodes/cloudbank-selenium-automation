@@ -2,9 +2,11 @@ package cloudBankPages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.bidi.log.Log;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.asserts.SoftAssert;
 
 public class WithdrawTransactionPage {
 
@@ -37,11 +39,31 @@ public class WithdrawTransactionPage {
     }
 
     public void fillOutForm(String client, String withdrawAmt){
-        clientDrpDown.click();
         Select clientDropdown = new Select(clientDrpDown);
         clientDropdown.selectByVisibleText(client);
         withdrawAmountTxt.sendKeys(withdrawAmt);
         trxRef = trxRefTxt.getAttribute("value");
         confirmBtn.click();
+    }
+
+    public void verifyWithdrawTrx(String trxDate, String trxRef, String status, String client, String withdrawAmount, String currency){
+        SoftAssert softAssert = new SoftAssert();
+        Select clientTxt = new Select(clientDrpDown);
+
+        softAssert.assertTrue(trxDateTxt.getAttribute("value").equals(trxDate),
+                "Transaction Date does not match");
+        softAssert.assertTrue(trxRefTxt.getAttribute("value").equals(trxRef),
+                "Transaction Reference does not match");
+        softAssert.assertTrue(statusTxt.getAttribute("value").equals(status),
+                "Status does not match");
+        System.out.println(clientTxt.getFirstSelectedOption().getText());
+        softAssert.assertTrue(clientTxt.getFirstSelectedOption().getText().equals(client),
+                "Client does not match");
+        softAssert.assertTrue(withdrawAmountTxt.getAttribute("value").equals(withdrawAmount),
+                "Withdraw Amount does not match");
+        softAssert.assertTrue(currencyTxt.getAttribute("value").equals(currency),
+                "Currency does not match");
+
+        softAssert.assertAll();
     }
 }

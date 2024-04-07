@@ -28,14 +28,20 @@ public class Homepage {
     public WebElement newClientBtn;
     @FindBy(xpath = "//span[text()='Deposit']")
     public WebElement depositBtn;
+    @FindBy(xpath = "//div[@id='collapseDeposit']/div/a[text()='Deposit Transaction List']")
+    public WebElement depositTrxListBtn;
     @FindBy(xpath = "//div[@id='collapseDeposit']/div/a[text()='New Deposit']")
     public WebElement newDepositBtn;
     @FindBy(xpath = "//span[text()='Withdraw']")
     public WebElement withdrawBtn;
+    @FindBy(xpath = "//div[@id='collapseWithdraw']/div/a[text()='Withdraw Transaction List']")
+    public WebElement withdrawTrxListBtn;
     @FindBy(xpath = "//div[@id='collapseWithdraw']/div/a[text()='New Withdraw']")
     public WebElement newWithdrawBtn;
     @FindBy(xpath = "//span[text()='Transfer']")
     public WebElement transferBtn;
+    @FindBy(xpath = "//div[@id='collapseTransfer']/div/a[text()='Transfer Transaction List']")
+    public WebElement transferTrxListBtn;
     @FindBy(xpath = "//div[@id='collapseTransfer']/div/a[text()='New Transfer']")
     public WebElement newTransferBtn;
 

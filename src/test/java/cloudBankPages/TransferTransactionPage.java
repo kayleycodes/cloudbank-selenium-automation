@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.asserts.SoftAssert;
 
 public class TransferTransactionPage {
 
@@ -49,4 +50,28 @@ public class TransferTransactionPage {
         trxRef = trxRefTxt.getAttribute("value");
         confirmBtn.click();
     }
+    public void verifyTransferTrx(String trxDate, String trxRef, String status, String fromClient, String toClient, String transferAmount, String currency){
+
+        SoftAssert softAssert = new SoftAssert();
+        Select fromClientTxt = new Select(fromClientdrpDown);
+        Select toClientTxt = new Select(toClientdrpDown);
+
+        softAssert.assertTrue(trxDateTxt.getAttribute("value").equals(trxDate),
+                "Transaction Date does not match");
+        softAssert.assertTrue(trxRefTxt.getAttribute("value").equals(trxRef),
+                "Transaction Reference does not match");
+        softAssert.assertTrue(statusTxt.getAttribute("value").equals(status),
+                "Status does not match");
+        softAssert.assertTrue(fromClientTxt.getFirstSelectedOption().getText().equals(fromClient),
+                "From client does not match");
+        softAssert.assertTrue(toClientTxt.getFirstSelectedOption().getText().equals(toClient),
+                "To client does not match");
+        softAssert.assertTrue(transferAmtTxt.getAttribute("value").equals(transferAmount),
+                "Transfer Amount does not match");
+        softAssert.assertTrue(currencyTxt.getAttribute("value").equals(currency),
+                "Currency does not match");
+
+        softAssert.assertAll();
+    }
+
 }
