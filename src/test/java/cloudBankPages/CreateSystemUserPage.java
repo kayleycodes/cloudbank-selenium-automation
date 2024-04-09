@@ -30,7 +30,8 @@ public class CreateSystemUserPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void createNewUser(String newUsername, String newPassword){
+    public void fillOutForm(String newUsername, String newPassword){
+        newUserNameTxt.clear();
         newUserNameTxt.sendKeys(newUsername);
         newPassTxt.sendKeys(newPassword);
         confirmNewPasswordTxt.sendKeys(newPassword);

@@ -17,10 +17,14 @@ public class Homepage {
     public WebElement systemUserBtn;
     @FindBy(xpath = "//div[@id='collapseUsers']/div/a[text()='New System User']")
     public WebElement newSystemUserBtn;
+    @FindBy(xpath = "//div[@id='collapseUsers']/div/a[text()='System User List']")
+    public WebElement systemUserListBtn;
     @FindBy(xpath = "//span[text()='Clients']")
     public WebElement clientsBtn;
     @FindBy(xpath = "//div[@id='collapseClients']/div/a[text()='New Client']")
     public WebElement newClientBtn;
+    @FindBy(xpath = "//div[@id='collapseClients']/div/a[text()='Client List']")
+    public WebElement clientListBtn;
     @FindBy(xpath = "//span[text()='Deposit']")
     public WebElement depositBtn;
     @FindBy(xpath = "//div[@id='collapseDeposit']/div/a[text()='Deposit Transaction List']")

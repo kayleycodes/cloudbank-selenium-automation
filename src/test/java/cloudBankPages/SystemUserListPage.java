@@ -15,11 +15,10 @@ public class SystemUserListPage {
     @FindBy(xpath = "//h1[text()='System User List']")
     public WebElement systemUserListTitle;
 
-    private WebElement getUserNameListLocator(String text){
-        String userNameListLocator = "//tbody/tr/td/a[text()='%s']";
+    public WebElement getUserNameListLocator(String text){
+        String userNameListLocator = "//tbody/tr/td/a[contains(text(),'%s')]";
         return driver.findElement(By.xpath(String.format(userNameListLocator, text)));
     }
-
 
     public SystemUserListPage(WebDriver driver){
         this.driver = driver;

@@ -14,9 +14,14 @@ public class ClientListPage {
     @FindBy(xpath = "//h1[text()='Client List']")
     public WebElement clientListTitle;
 
-    private WebElement getClientNameListLocator(String text){
-        String clientNameListLocator = "//table[@id='dataTable']//tbody/tr/td[text()='%s']";
-        return driver.findElement(By.xpath(String.format(clientNameListLocator, text)));
+    public WebElement getAccountNumLocator(String text){
+        String accountNameLocator = "//table[@id='dataTable']//tbody/tr/td[text()='%s']";
+        return driver.findElement(By.xpath(String.format(accountNameLocator, text)));
+    }
+
+    public WebElement getClientNameLocator(String text){
+        String clientNameLocator = "//table[@id='dataTable']//tbody/tr/td/a[contains(text(), '%s')]";
+        return driver.findElement(By.xpath(String.format(clientNameLocator, text)));
     }
 
     public ClientListPage(WebDriver driver){
@@ -25,6 +30,6 @@ public class ClientListPage {
     }
 
     public void verifyClientExists(String accountNum) {
-        assertTrue(getClientNameListLocator(accountNum).isDisplayed());
+        assertTrue(getAccountNumLocator(accountNum).isDisplayed());
     }
 }

@@ -11,6 +11,9 @@ public class CreateClientPage {
 
     @FindBy(xpath = "//h1[text()='Create Client']")
     public WebElement createClientTitle;
+
+    @FindBy(xpath = "//h1[text()='Update Client']")
+    public WebElement updateClientTitle;
     @FindBy(id = "id_fname")
     public WebElement firstNameTxt;
 
@@ -45,5 +48,13 @@ public class CreateClientPage {
         accountNum = accountNumTxt.getAttribute("value");
 
         confirmBtn.click();
+    }
+
+    public void clearAllTextFieldValue(){
+        firstNameTxt.clear();
+        lastNameTxt.clear();
+        addressTxt.clear();
+        mobileNumTxt.clear();
+        emailAddTxt.clear();
     }
 }
