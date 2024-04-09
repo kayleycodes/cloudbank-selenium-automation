@@ -29,6 +29,8 @@ public class CreateClientPage {
     public WebElement mobileNumTxt;
     @FindBy(xpath = "//button/span[text()='Confirm']")
     public WebElement confirmBtn;
+    @FindBy(xpath = "//a/span[text()='Delete']")
+    public WebElement deleteBtn;
     @FindBy(xpath = "//button/span[text()='Confirm and add another']")
     public WebElement confirmAndAddAnotherBtn;
 

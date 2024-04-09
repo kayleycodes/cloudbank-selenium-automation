@@ -14,8 +14,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import static org.testng.Assert.assertTrue;
 import org.testng.asserts.SoftAssert;
@@ -28,6 +26,11 @@ public class NewUserCreationTestCase {
     Homepage objHomePage;
     CreateSystemUserPage objCreateSysUserPage;
     SystemUserListPage objSystemUserListPage;
+    String randomAlphaNumeric = RandomStringUtils.randomAlphanumeric(8);
+
+    String username = "testUser"+randomAlphaNumeric;
+    String password = "te$ting123";
+
 
     @BeforeTest
     void setUp() {
@@ -54,11 +57,6 @@ public class NewUserCreationTestCase {
 
     @Test
     void create_new_user(){
-
-        String randomAlphaNumeric = RandomStringUtils.randomAlphanumeric(8);
-
-        String username = "testUser"+randomAlphaNumeric;
-        String password = "te$ting123";
 
         SoftAssert softAssert = new SoftAssert();
 

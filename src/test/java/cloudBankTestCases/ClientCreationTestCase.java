@@ -4,6 +4,7 @@ import cloudBankPages.ClientListPage;
 import cloudBankPages.CreateClientPage;
 import cloudBankPages.Homepage;
 import cloudBankPages.LogInPage;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,8 +13,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import java.time.Duration;
 
@@ -27,6 +26,8 @@ public class ClientCreationTestCase {
     Homepage objHomePage;
     CreateClientPage objCreateClientPage;
     ClientListPage objClientListPage;
+
+    String clientAccountNum;
 
     @BeforeTest
     void setUp() {
@@ -54,9 +55,16 @@ public class ClientCreationTestCase {
     @Test
     void createNewClient(){
 
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("ddMMyyyyHHmmss");
-        String uniqueString = dtf.format(currentDateTime);
+        String randomAlphabet = RandomStringUtils.randomAlphabetic(8);
+        String randomNumeric = RandomStringUtils.randomNumeric(8);
+        String randomAlphaNumeric = RandomStringUtils.randomAlphanumeric(8);
+
+
+        String firstName = "Client"+randomAlphabet;
+        String lastName = "Test"+randomAlphabet;
+        String address = "Manila "+randomAlphaNumeric;
+        String mobileNum = "12"+randomNumeric;
+        String emailAddress = "testabc"+randomAlphaNumeric+"@gmail.com";
 
         SoftAssert softAssert = new SoftAssert();
 
@@ -77,7 +85,7 @@ public class ClientCreationTestCase {
                 "Create Client Title Not Found");
 
         //Fill out form
-        objCreateClientPage.fillOutForm("Client", "Abc", "123 Philippines", "092712345678", "clientabc"+uniqueString+"@gmail.com");
+        objCreateClientPage.fillOutForm(firstName, lastName, address, mobileNum, emailAddress);
 
         //Verify Client successfully created
         assertTrue(objClientListPage.clientListTitle.isDisplayed());
@@ -86,6 +94,6 @@ public class ClientCreationTestCase {
         softAssert.assertAll();
 
         driver.quit();
-
+        clientAccountNum = objCreateClientPage.accountNum;
     }
 }

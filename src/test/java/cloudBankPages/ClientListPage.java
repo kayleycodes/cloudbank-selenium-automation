@@ -20,7 +20,7 @@ public class ClientListPage {
     }
 
     public WebElement getClientNameLocator(String text){
-        String clientNameLocator = "//table[@id='dataTable']//tbody/tr/td/a[contains(text(), '%s')]";
+        String clientNameLocator = "//tbody/tr/td[text()='%s']/preceding-sibling::td[2]";
         return driver.findElement(By.xpath(String.format(clientNameLocator, text)));
     }
 

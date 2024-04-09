@@ -1,19 +1,19 @@
 package cloudBankPages;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import static org.testng.Assert.assertTrue;
-
 public class CreateSystemUserPage {
 
     WebDriver driver;
-//[text()='Create System User']
-    @FindBy(xpath = "//h1")
+
+    @FindBy(xpath = "//h1[text()='Create System User']")
     public WebElement createUserTitle;
+    @FindBy(xpath = "//h1[text()='Update System User']")
+    public WebElement updateUserTitle;
     @FindBy(id = "id_username")
     public WebElement newUserNameTxt;
     @FindBy(id = "id_password1")
@@ -22,6 +22,8 @@ public class CreateSystemUserPage {
     public WebElement confirmNewPasswordTxt;
     @FindBy(xpath = "//button/span[text()='Confirm']")
     public WebElement confirmBtn;
+    @FindBy(xpath = "//a/span[text()='Delete']")
+    public WebElement deleteBtn;
     @FindBy(xpath = "//button/span[text()='Confirm and add another']")
     public WebElement confirmAndAddAnotherBtn;
 
@@ -37,5 +39,6 @@ public class CreateSystemUserPage {
         confirmNewPasswordTxt.sendKeys(newPassword);
         confirmBtn.click();
     }
+
 
 }

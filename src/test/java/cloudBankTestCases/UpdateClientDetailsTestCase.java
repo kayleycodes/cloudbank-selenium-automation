@@ -55,8 +55,6 @@ public class UpdateClientDetailsTestCase {
         String randomNumeric = RandomStringUtils.randomNumeric(8);
         String randomAlphaNumeric = RandomStringUtils.randomAlphanumeric(8);
 
-        SoftAssert softAssert = new SoftAssert();
-
 
         String firstName = "FOR UPDATE "+randomAlphabet;
         String lastName = "Test "+randomAlphabet;
@@ -64,7 +62,7 @@ public class UpdateClientDetailsTestCase {
         String mobileNum = "12"+randomNumeric;
         String emailAddress = "testabc"+randomAlphaNumeric+"@gmail.com";
 
-
+        SoftAssert softAssert = new SoftAssert();
         objHomePage = new Homepage(driver);
         objCreateClientPage = new CreateClientPage(driver);
         objClientListPage = new ClientListPage(driver);
