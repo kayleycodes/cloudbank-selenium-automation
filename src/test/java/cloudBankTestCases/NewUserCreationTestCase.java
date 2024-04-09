@@ -4,6 +4,7 @@ import cloudBankPages.CreateSystemUserPage;
 import cloudBankPages.Homepage;
 import cloudBankPages.LogInPage;
 import cloudBankPages.SystemUserListPage;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -13,6 +14,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static org.testng.Assert.assertTrue;
 import org.testng.asserts.SoftAssert;
@@ -25,8 +28,6 @@ public class NewUserCreationTestCase {
     Homepage objHomePage;
     CreateSystemUserPage objCreateSysUserPage;
     SystemUserListPage objSystemUserListPage;
-
-
 
     @BeforeTest
     void setUp() {
@@ -53,7 +54,10 @@ public class NewUserCreationTestCase {
 
     @Test
     void create_new_user(){
-        String username = "testuser0229";
+
+        String randomAlphaNumeric = RandomStringUtils.randomAlphanumeric(8);
+
+        String username = "testUser"+randomAlphaNumeric;
         String password = "te$ting123";
 
         SoftAssert softAssert = new SoftAssert();
@@ -71,9 +75,9 @@ public class NewUserCreationTestCase {
         objHomePage.newSystemUserBtn.click();
 
         //Create New User
-        softAssert.assertTrue(objCreateSysUserPage.createUserTitle.getText().equals("Create System Users"),
+        softAssert.assertTrue(objCreateSysUserPage.createUserTitle.getText().equals("Create System User"),
                 "Create System User Title Not Found");
-        objCreateSysUserPage.createNewUser(username, password);
+        objCreateSysUserPage.fillOutForm(username, password);
 
         //Verify user is successfully created
         assertTrue(objSystemUserListPage.systemUserListTitle.isDisplayed());
