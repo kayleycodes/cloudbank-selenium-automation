@@ -1,4 +1,4 @@
-package cloudBankPages;
+package cloudbankpages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,18 +11,18 @@ import static org.testng.Assert.assertTrue;
 public class WithdrawTransactionListPage {
     WebDriver driver;
     @FindBy(xpath = "//h1[text()='Withdraw Transaction List']")
-    public WebElement withdrawTrxListTitle;
+    public WebElement withdrawTransactionListTitle;
 
-    public WebElement getWithdrawTrxInList(String text){
-        String trxRefInListLocator = "//table[@id='dataTable']//tbody//a[text()='%s']";
-        return driver.findElement(By.xpath(String.format(trxRefInListLocator, text)));
-    }
     public WithdrawTransactionListPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void verifyWithdrawTrxExists(String trxRef) {
-        assertTrue(getWithdrawTrxInList(trxRef).isDisplayed());
+    public WebElement getWithdrawTransactionInList(String transactionReference){
+        String trxRefInListLocator = "//table[@id='dataTable']//tbody//a[text()='%s']";
+        return driver.findElement(By.xpath(String.format(trxRefInListLocator, transactionReference)));
+    }
+    public void verifyWithdrawTransactionExists(String transactionReference) {
+        assertTrue(getWithdrawTransactionInList(transactionReference).isDisplayed());
     }
 }

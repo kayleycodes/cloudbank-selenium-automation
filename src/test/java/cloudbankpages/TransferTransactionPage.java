@@ -1,4 +1,4 @@
-package cloudBankPages;
+package cloudbankpages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,13 +10,12 @@ import org.testng.asserts.SoftAssert;
 public class TransferTransactionPage {
 
     WebDriver driver;
-
     @FindBy(xpath = "//h1[text()='Transfer Transaction']")
     public WebElement transferTransactionTitle;
     @FindBy(id = "id_trx_date")
-    public WebElement trxDateTxt;
+    public WebElement transactionDateTxt;
     @FindBy(id = "id_trx_ref")
-    public WebElement trxRefTxt;
+    public WebElement transactionReferenceTxt;
     @FindBy(id = "id_status")
     public WebElement statusTxt;
     @FindBy(id = "id_from_client")
@@ -24,15 +23,13 @@ public class TransferTransactionPage {
     @FindBy(id = "id_to_client")
     public WebElement toClientdrpDown;
     @FindBy(id = "id_transfer_amt")
-    public WebElement transferAmtTxt;
+    public WebElement transferAmountTxt;
     @FindBy(id = "id_curr")
     public WebElement currencyTxt;
     @FindBy(xpath = "//button/span[text()='Confirm']")
     public WebElement confirmBtn;
-    @FindBy(xpath = "//button/span[text()='Confirm and add another']")
-    public WebElement confirmAndAddAnotherBtn;
 
-    public String trxRef;
+    public String transactionReference;
 
     public TransferTransactionPage(WebDriver driver){
         this.driver = driver;
@@ -46,19 +43,19 @@ public class TransferTransactionPage {
         toClientdrpDown.click();
         Select toClientDropdown = new Select(toClientdrpDown);
         toClientDropdown.selectByVisibleText(toClient);
-        transferAmtTxt.sendKeys(transferAmt);
-        trxRef = trxRefTxt.getAttribute("value");
+        transferAmountTxt.sendKeys(transferAmt);
+        transactionReference = transactionReferenceTxt.getAttribute("value");
         confirmBtn.click();
     }
-    public void verifyTransferTrx(String trxDate, String trxRef, String status, String fromClient, String toClient, String transferAmount, String currency){
+    public void verifyTransferTransaction(String trxDate, String trxRef, String status, String fromClient, String toClient, String transferAmount, String currency){
 
         SoftAssert softAssert = new SoftAssert();
         Select fromClientTxt = new Select(fromClientdrpDown);
         Select toClientTxt = new Select(toClientdrpDown);
 
-        softAssert.assertTrue(trxDateTxt.getAttribute("value").equals(trxDate),
+        softAssert.assertTrue(transactionDateTxt.getAttribute("value").equals(trxDate),
                 "Transaction Date does not match");
-        softAssert.assertTrue(trxRefTxt.getAttribute("value").equals(trxRef),
+        softAssert.assertTrue(transactionReferenceTxt.getAttribute("value").equals(trxRef),
                 "Transaction Reference does not match");
         softAssert.assertTrue(statusTxt.getAttribute("value").equals(status),
                 "Status does not match");
@@ -66,7 +63,7 @@ public class TransferTransactionPage {
                 "From client does not match");
         softAssert.assertTrue(toClientTxt.getFirstSelectedOption().getText().equals(toClient),
                 "To client does not match");
-        softAssert.assertTrue(transferAmtTxt.getAttribute("value").equals(transferAmount),
+        softAssert.assertTrue(transferAmountTxt.getAttribute("value").equals(transferAmount),
                 "Transfer Amount does not match");
         softAssert.assertTrue(currencyTxt.getAttribute("value").equals(currency),
                 "Currency does not match");

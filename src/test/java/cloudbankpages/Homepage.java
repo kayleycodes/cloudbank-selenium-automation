@@ -1,4 +1,4 @@
-package cloudBankPages;
+package cloudbankpages;
 
 
 import org.openqa.selenium.WebDriver;
@@ -10,7 +10,6 @@ import org.openqa.selenium.support.PageFactory;
 public class Homepage {
 
     WebDriver driver;
-
     @FindBy(xpath = "//span[contains(text(),'Welcome')]")
     public WebElement welcomeUserTxt;
     @FindBy(xpath = "//span[text()='System Users']")
@@ -28,19 +27,19 @@ public class Homepage {
     @FindBy(xpath = "//span[text()='Deposit']")
     public WebElement depositBtn;
     @FindBy(xpath = "//div[@id='collapseDeposit']/div/a[text()='Deposit Transaction List']")
-    public WebElement depositTrxListBtn;
+    public WebElement depositTransactionListBtn;
     @FindBy(xpath = "//div[@id='collapseDeposit']/div/a[text()='New Deposit']")
     public WebElement newDepositBtn;
     @FindBy(xpath = "//span[text()='Withdraw']")
     public WebElement withdrawBtn;
     @FindBy(xpath = "//div[@id='collapseWithdraw']/div/a[text()='Withdraw Transaction List']")
-    public WebElement withdrawTrxListBtn;
+    public WebElement withdrawTransactionListBtn;
     @FindBy(xpath = "//div[@id='collapseWithdraw']/div/a[text()='New Withdraw']")
     public WebElement newWithdrawBtn;
     @FindBy(xpath = "//span[text()='Transfer']")
     public WebElement transferBtn;
     @FindBy(xpath = "//div[@id='collapseTransfer']/div/a[text()='Transfer Transaction List']")
-    public WebElement transferTrxListBtn;
+    public WebElement transferTransactionListBtn;
     @FindBy(xpath = "//div[@id='collapseTransfer']/div/a[text()='New Transfer']")
     public WebElement newTransferBtn;
 

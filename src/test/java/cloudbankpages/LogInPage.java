@@ -1,19 +1,13 @@
-package cloudBankPages;
+package cloudbankpages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 
 public class LogInPage {
 
     WebDriver driver;
-
 //    @FindBy(xpath = "//h1")
 //    WebElement header;
 //    @FindBy(id = "exampleInputUsername")
@@ -22,7 +16,6 @@ public class LogInPage {
 //    WebElement passwordTxt;
 //    @FindBy(xpath = "//form[@id='login-form']/input[@value='Log in']")
 //    WebElement logInBtn;
-
     By header = By.xpath("//h1[text()='Welcome to Cloud Bank']");
     By userNameTxt = By.id("exampleInputUsername");
     By passwordTxt = By.id("exampleInputPassword");

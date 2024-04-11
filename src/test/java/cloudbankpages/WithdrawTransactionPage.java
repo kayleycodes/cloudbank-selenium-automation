@@ -1,4 +1,4 @@
-package cloudBankPages;
+package cloudbankpages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,13 +10,12 @@ import org.testng.asserts.SoftAssert;
 public class WithdrawTransactionPage {
 
     WebDriver driver;
-
     @FindBy(xpath = "//h1[text()='Withdraw Transaction']")
     public WebElement withdrawTransactionTitle;
     @FindBy(id = "id_trx_date")
-    public WebElement trxDateTxt;
+    public WebElement transactionDateTxt;
     @FindBy(id = "id_trx_ref")
-    public WebElement trxRefTxt;
+    public WebElement transactionReferencext;
     @FindBy(id = "id_status")
     public WebElement statusTxt;
     @FindBy(id = "id_client")
@@ -27,10 +26,7 @@ public class WithdrawTransactionPage {
     public WebElement currencyTxt;
     @FindBy(xpath = "//button/span[text()='Confirm']")
     public WebElement confirmBtn;
-    @FindBy(xpath = "//button/span[text()='Confirm and add another']")
-    public WebElement confirmAndAddAnotherBtn;
-
-    public String trxRef;
+    public String trxReference;
 
     public WithdrawTransactionPage(WebDriver driver){
         this.driver = driver;
@@ -41,7 +37,7 @@ public class WithdrawTransactionPage {
         Select clientDropdown = new Select(clientDrpDown);
         clientDropdown.selectByVisibleText(client);
         withdrawAmountTxt.sendKeys(withdrawAmt);
-        trxRef = trxRefTxt.getAttribute("value");
+        trxReference = transactionReferencext.getAttribute("value");
         confirmBtn.click();
     }
 
@@ -49,13 +45,12 @@ public class WithdrawTransactionPage {
         SoftAssert softAssert = new SoftAssert();
         Select clientTxt = new Select(clientDrpDown);
 
-        softAssert.assertTrue(trxDateTxt.getAttribute("value").equals(trxDate),
+        softAssert.assertTrue(transactionDateTxt.getAttribute("value").equals(trxDate),
                 "Transaction Date does not match");
-        softAssert.assertTrue(trxRefTxt.getAttribute("value").equals(trxRef),
+        softAssert.assertTrue(transactionReferencext.getAttribute("value").equals(trxRef),
                 "Transaction Reference does not match");
         softAssert.assertTrue(statusTxt.getAttribute("value").equals(status),
                 "Status does not match");
-        System.out.println(clientTxt.getFirstSelectedOption().getText());
         softAssert.assertTrue(clientTxt.getFirstSelectedOption().getText().equals(client),
                 "Client does not match");
         softAssert.assertTrue(withdrawAmountTxt.getAttribute("value").equals(withdrawAmount),
